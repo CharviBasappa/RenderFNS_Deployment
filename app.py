@@ -2,6 +2,10 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
+@app.route("/", methods=["GET"])
+def home():
+    return jsonify({"message": "Backend is running successfully!"})
+
 @app.route('/analyze', methods=['POST'])
 def analyze():
     # Check if the file is present in the request
