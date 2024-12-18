@@ -12,9 +12,11 @@ def home():
 def analyze():
     # Check if the file is present in the request
     if 'file' not in request.files:
+        app.logger.error("No file uploaded in request")
         return jsonify({"error": "No file uploaded"}), 400
 
     file = request.files['file']
+    app.logger.info(f"Received file: {file.filename}")
 
     response = {
         "nutrition_data": {
